@@ -1,0 +1,13 @@
+{
+  "name": "carepath",
+  "version": "1.0.0",
+  "description": "Veyra / CarePath - Sustainable E-Commerce Comparison Site",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": ["ecommerce", "sustainability", "price-comparison"],
+  "author": "",
+  "license": "ISC"
+}

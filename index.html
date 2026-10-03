@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veyra — Independent Sustainable Shopping Intelligence</title>
+  <meta name="description" content="Compare what you'll actually pay across trusted stores—and discover choices that are better for the planet. Real final prices, delivery times, and verified eco impact scores.">
+
+  <!-- Google Fonts: Manrope (Headings) and DM Sans (Body/UI) as specified in Figma -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/Container_Logo_505_7843.svg">
+</head>
+<body>
+  <!-- Ambient background accent -->
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="navbar" id="top-navbar">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#" class="logo" aria-label="Veyra Home">
+        <div class="logo-icon-wrap">
+          <svg class="logo-leaf" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+          </svg>
+        </div>
+        <span class="logo-text">veyra</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="#sustainability" class="nav-link">Sustainability</a>
+        <button class="nav-link text-btn" id="open-demo-compare-btn">Demo Compare</button>
+      </nav>
+
+      <!-- Location / PIN Selector Button -->
+      <div class="nav-actions">
+        <button class="pin-badge" id="nav-pin-btn" title="Click to change your delivery location PIN code" aria-haspopup="dialog">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="pin-text" id="active-pin-display">208001</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Slide-down Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <nav class="mobile-nav-links">
+        <a href="#hero" class="mobile-nav-link">Home</a>
+        <a href="#how-it-works" class="mobile-nav-link">How it works</a>
+        <a href="#sustainability" class="mobile-nav-link">Sustainability</a>
+        <button class="mobile-nav-link text-btn" id="mobile-compare-btn">Open Live Comparison</button>
+      </nav>
+      <div class="mobile-pin-wrapper">
+        <span class="mobile-pin-label">Delivery PIN:</span>
+        <button class="pin-badge" id="mobile-pin-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span id="mobile-pin-display">208001 (Kanpur)</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="site-container hero-grid">
+        <!-- Hero Content (Left) -->
+        <div class="hero-content">
+          <!-- Tag pill -->
+          <div class="tag-pill">
+            <svg class="tag-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+            </svg>
+            <span>INDEPENDENT SHOPPING INTELLIGENCE</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="hero-title">
+            Save time.<br>
+            Save money.<br>
+            <span class="text-accent">Shop sustainably.</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="hero-subtitle">
+            Compare what you'll actually pay across trusted stores—and discover choices that are better for the planet.
+          </p>
+
+          <!-- Search Box Form -->
+          <form class="search-box" id="comparison-search-form" action="auth.html" method="GET" role="search">
+            <div class="search-input-group product-group">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+              </svg>
+              <input type="text" id="search-product-input" name="q" class="search-input" placeholder="Search product (e.g. iPhone 15, MacBook Air)" value="iPhone 15" autocomplete="off" aria-label="Product name to compare">
+              <!-- Autocomplete suggestions dropdown -->
+              <div class="suggestions-dropdown" id="search-suggestions" hidden>
+                <div class="suggestion-item" data-value="iPhone 15">
+                  <span class="sugg-name">Apple iPhone 15 (128 GB)</span>
+                  <span class="sugg-meta">7 stores · Best: ₹60,089</span>
+                </div>
+                <div class="suggestion-item" data-value="MacBook Air M3">
+                  <span class="sugg-name">Apple MacBook Air 13" M3 (8GB/256GB)</span>
+                  <span class="sugg-meta">5 stores · Best: ₹98,990</span>
+                </div>
+                <div class="suggestion-item" data-value="Sony WH-1000XM5">
+                  <span class="sugg-name">Sony WH-1000XM5 Wireless Headphones</span>
+                  <span class="sugg-meta">6 stores · Best: ₹26,990</span>
+                </div>
+                <div class="suggestion-item" data-value="Bodum French Press">
+                  <span class="sugg-name">Bodum Chambord 8-Cup French Press</span>
+                  <span class="sugg-meta">4 stores · Best: ₹2,450</span>
+                </div>
+                <div class="suggestion-item" data-value="Patagonia Fleece">
+                  <span class="sugg-name">Patagonia Classic Retro-X Fleece</span>
+                  <span class="sugg-meta">3 stores · High Eco Score</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="search-divider" aria-hidden="true"></div>
+
+            <div class="search-input-group pin-group">
+              <svg class="input-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <input type="text" id="search-pin-input" name="pin" class="search-input pin-input" placeholder="PIN code" value="208001" maxlength="6" aria-label="Delivery PIN code">
+            </div>
+
+            <button type="submit" class="compare-btn" id="compare-now-btn">
+              <span>Compare now</span>
+              <svg class="btn-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+          </form>
+
+          <!-- USPs / Badges -->
+          <div class="hero-usps">
+            <div class="usp-item">
+              <svg class="usp-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5"/>
+              </svg>
+              <span>Independent rankings</span>
+            </div>
+            <div class="usp-item">
+              <svg class="usp-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 6 9 17l-5-5"/>
+              </svg>
+              <span>Delivery included</span>
+            </div>
+            <div class="usp-item">
+              <svg class="usp-leaf" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+              <span>Eco impact made simple</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Showcase (Right) -->
+        <div class="hero-visual">
+          <div class="showcase-card-wrapper" id="hero-card-interactive" title="Click to view live comparison prototype">
+            <!-- Top Illustration Frame -->
+            <div class="showcase-art-frame">
+              <img src="assets/hero-illustration.png" alt="Illustration of conscious shoppers, green delivery and verified stores" class="showcase-art-img" loading="eager">
+            </div>
+
+            <!-- Overlaid Information Cards (Interactive Float layout from Figma) -->
+            <div class="floating-cards-cluster">
+              <!-- Card 1: One Clear Decision -->
+              <div class="f-card card-stores">
+                <div class="f-card-header">
+                  <svg class="card-sparkle" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+                  </svg>
+                  <span class="f-eyebrow">ONE CLEAR DECISION</span>
+                </div>
+                <div class="f-metric-title">7 stores compared</div>
+              </div>
+
+              <!-- Card 2: Best Final Price -->
+              <div class="f-card card-price">
+                <div class="price-icon-badge">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 16 7-7 4 4 7-7"/>
+                    <path d="M14 6h7v7"/>
+                  </svg>
+                </div>
+                <div class="price-details">
+                  <span class="f-eyebrow">BEST FINAL PRICE</span>
+                  <div class="price-val" id="showcase-price-val">₹60,098</div>
+                  <span class="price-sub">Delivery included</span>
+                </div>
+              </div>
+
+              <!-- Card 3: Sustainability Score Card -->
+              <div class="f-card card-sustain">
+                <div class="sustain-circle">
+                  <span class="sustain-num">82</span>
+                  <span class="sustain-pct">%</span>
+                </div>
+                <div class="sustain-details">
+                  <span class="f-eyebrow">SUSTAINABILITY</span>
+                  <div class="sustain-badge-title">Better choice</div>
+                  <span class="sustain-tagline">Easy to repair & reuse</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Overlapping Store Avatars Strip -->
+            <div class="store-avatars-row">
+              <span class="store-avatar amz" title="Amazon India">amz</span>
+              <span class="store-avatar flip" title="Flipkart">Flip</span>
+              <span class="store-avatar croma" title="Croma">Croma</span>
+              <span class="store-avatar more" title="+4 other verified stores: Apple, Reliance, Vijay Sales, Cashify">+4</span>
+            </div>
+
+            <div class="click-hint-badge">
+              <span>Interactive Prototype · Click to Compare</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3-STEP PROCESS RIBBON -->
+    <section class="process-ribbon" aria-label="Quick process overview">
+      <div class="site-container ribbon-grid">
+        <!-- Step 1 -->
+        <div class="ribbon-step">
+          <span class="step-num">01</span>
+          <div class="step-text">
+            <h3 class="step-title">One search</h3>
+            <p class="step-desc">Tell us what you need and where you need it.</p>
+          </div>
+        </div>
+
+        <div class="ribbon-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="ribbon-step">
+          <span class="step-num">02</span>
+          <div class="step-text">
+            <h3 class="step-title">Every real cost</h3>
+            <p class="step-desc">We add delivery, availability and timing.</p>
+          </div>
+        </div>
+
+        <div class="ribbon-arrow" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="ribbon-step">
+          <span class="step-num">03</span>
+          <div class="step-text">
+            <h3 class="step-title">One clear choice</h3>
+            <p class="step-desc">Choose by price, speed or planet impact.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW VEYRA WORKS SECTION -->
+    <section class="how-it-works-section" id="how-it-works">
+      <div class="site-container">
+        <!-- Section Header -->
+        <div class="section-header-centered">
+          <span class="section-eyebrow">HOW VEYRA WORKS</span>
+          <h2 class="section-title">From open tabs to one clear answer.</h2>
+          <p class="section-subtitle">
+            No sponsored winners. No hidden delivery costs. Just the information that changes your decision.
+          </p>
+        </div>
+
+        <!-- 3 Feature Cards Grid -->
+        <div class="cards-grid">
+          <!-- Card 1 -->
+          <article class="feature-card">
+            <div class="card-top-row">
+              <div class="feature-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.3-4.3"/>
+                </svg>
+              </div>
+              <span class="card-step-num">01</span>
+            </div>
+            <h3 class="card-heading">Search once</h3>
+            <p class="card-body">
+              Product and PIN code—nothing more. We check trusted stores for you.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="feature-card">
+            <div class="card-top-row">
+              <div class="feature-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 16 7-7 4 4 7-7"/>
+                  <path d="M14 6h7v7"/>
+                </svg>
+              </div>
+              <span class="card-step-num">02</span>
+            </div>
+            <h3 class="card-heading">Compare the truth</h3>
+            <p class="card-body">
+              See final prices, delivery time and store reliability side by side.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="feature-card">
+            <div class="card-top-row">
+              <div class="feature-icon-bubble">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                </svg>
+              </div>
+              <span class="card-step-num">03</span>
+            </div>
+            <h3 class="card-heading">Choose better</h3>
+            <p class="card-body">
+              Get a clear match and a sustainable alternative worth considering.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOP WITH CONTEXT (SUSTAINABILITY SPOTLIGHT) -->
+    <section class="sustainability-section" id="sustainability">
+      <div class="site-container">
+        <div class="context-banner">
+          <!-- Left Visual: Photo with floating pill -->
+          <div class="context-media">
+            <img src="assets/coffee-press.png" alt="A reusable French press made from natural and durable materials" class="context-img" loading="lazy">
+            <div class="media-tag-pill">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+              <span>Thoughtful materials</span>
+            </div>
+          </div>
+
+          <!-- Right Content: Score Breakdown & Explanation -->
+          <div class="context-info">
+            <span class="section-eyebrow">SHOP WITH CONTEXT</span>
+            <h2 class="context-title">Shopping smarter shouldn't cost the planet.</h2>
+            <p class="context-desc">
+              Our score turns complex information—materials, lifespan, repairability and packaging—into one signal you can understand at a glance.
+            </p>
+
+            <!-- Sustainability Meter Block -->
+            <div class="score-display-block">
+              <div class="score-number-col">
+                <span class="big-score">82</span>
+                <span class="score-total">/ 100</span>
+              </div>
+              <div class="score-meter-col">
+                <div class="meter-header">
+                  <div class="meter-label">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                    </svg>
+                    <span>Sustainability</span>
+                  </div>
+                  <span class="meter-pct">82%</span>
+                </div>
+                <div class="meter-track" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100">
+                  <div class="meter-fill" style="width: 82%;"></div>
+                </div>
+                <div class="meter-subtags">
+                  <span>High durability</span>
+                  <span class="bullet-dot">·</span>
+                  <span>Low-plastic packaging</span>
+                  <span class="bullet-dot">·</span>
+                  <span>Repairable</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Link / Button -->
+            <button class="score-explainer-link" id="open-score-modal-btn">
+              <span>How the score works</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-main-grid">
+        <!-- Brand & Description -->
+        <div class="footer-col brand-col">
+          <div class="logo footer-logo">
+            <div class="logo-icon-wrap lime-accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+            </div>
+            <span class="logo-text light-text">veyra</span>
+          </div>
+          <p class="footer-tagline">
+            One search for a clearer, fairer shopping decision.
+          </p>
+        </div>
+
+        <!-- Belief Statement -->
+        <div class="footer-col belief-col">
+          <span class="footer-eyebrow">OUR BELIEF</span>
+          <p class="footer-belief-text">
+            Good choices should be easy to make.
+          </p>
+        </div>
+
+        <!-- Links Grid -->
+        <div class="footer-col links-col">
+          <ul class="footer-links-list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#sustainability">Sustainability</a></li>
+            <li><a href="#" id="footer-about-link">About</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom-bar">
+        <p class="copyright">© 2025 Veyra. Built for better buying.</p>
+        <p class="guarantee">Independent comparisons · No paid rankings</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================== -->
+  <!-- WORKING PROTOTYPE INTERACTIVE MODALS & DRAWER -->
+  <!-- ======================================================== -->
+
+  <!-- 1. LIVE COMPARISON MODAL (FULL PROTOTYPE EXPERIENCE) -->
+  <div class="modal-overlay" id="compare-modal" aria-hidden="true" role="dialog" aria-labelledby="compare-modal-title">
+    <div class="modal-backdrop" id="compare-modal-backdrop"></div>
+    <div class="modal-container compare-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <div class="tag-pill modal-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/>
+            </svg>
+            <span>LIVE COMPARISON ENGINE</span>
+          </div>
+          <h2 class="modal-title" id="compare-modal-title">Apple iPhone 15 (128 GB)</h2>
+          <div class="modal-meta-row">
+            <span class="meta-item">📍 Delivery to PIN: <strong id="modal-current-pin">208001</strong> (<button class="change-pin-inline" id="modal-change-pin-btn">change</button>)</span>
+            <span class="meta-divider">•</span>
+            <span class="meta-item">7 verified stores compared</span>
+            <span class="meta-divider">•</span>
+            <span class="meta-item">Last checked: <span id="last-updated-time">Just now</span></span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-compare-modal-btn" aria-label="Close comparison dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Quick Filter Bar -->
+      <div class="filter-bar">
+        <span class="filter-label">Sort & Filter:</span>
+        <div class="filter-chips">
+          <button class="filter-chip active" data-filter="best">Best Choice 🏆</button>
+          <button class="filter-chip" data-filter="price">Lowest Final Price 💰</button>
+          <button class="filter-chip" data-filter="speed">Fastest Delivery ⚡</button>
+          <button class="filter-chip" data-filter="eco">Highest Eco Score 🌿</button>
+          <button class="filter-chip" data-filter="refurb">Refurbished / Circular ♻️</button>
+        </div>
+      </div>
+
+      <!-- Comparison Cards List -->
+      <div class="comparison-results-list" id="comparison-results-container">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- Bottom Summary Guarantee -->
+      <div class="modal-footer-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#335938" stroke-width="2.2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
+          <path d="m9 12 2 2 4-4"/>
+        </svg>
+        <span><strong>Veyra Independence Guarantee:</strong> Stores cannot buy placement or adjust rankings. All prices include mandatory taxes, delivery, and payment fees.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. PIN CODE SELECTOR MODAL -->
+  <div class="modal-overlay" id="pin-modal" aria-hidden="true" role="dialog" aria-labelledby="pin-modal-title">
+    <div class="modal-backdrop" id="pin-modal-backdrop"></div>
+    <div class="modal-container pin-modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title small-title" id="pin-modal-title">Choose Delivery Location</h3>
+        <button class="modal-close-btn" id="close-pin-modal-btn" aria-label="Close location modal">✕</button>
+      </div>
+      <div class="pin-modal-body">
+        <p class="pin-hint">Real final pricing requires calculating exact pin-code logistics and warehouse proximity.</p>
+        <div class="custom-pin-row">
+          <input type="text" id="manual-pin-input" class="custom-pin-input" placeholder="Enter 6-digit PIN" maxlength="6" value="208001">
+          <button class="apply-pin-btn" id="save-pin-btn">Set PIN</button>
+        </div>
+        <div class="popular-pins-section">
+          <span class="sub-label">Popular Locations:</span>
+          <div class="popular-pins-grid">
+            <button class="pin-option-btn active" data-pin="208001" data-city="Kanpur">
+              <strong>208001</strong> <span>Kanpur, UP</span>
+            </button>
+            <button class="pin-option-btn" data-pin="110001" data-city="New Delhi">
+              <strong>110001</strong> <span>Connaught Place, Delhi</span>
+            </button>
+            <button class="pin-option-btn" data-pin="400001" data-city="Mumbai">
+              <strong>400001</strong> <span>Fort, Mumbai</span>
+            </button>
+            <button class="pin-option-btn" data-pin="560001" data-city="Bengaluru">
+              <strong>560001</strong> <span>MG Road, Bengaluru</span>
+            </button>
+            <button class="pin-option-btn" data-pin="700001" data-city="Kolkata">
+              <strong>700001</strong> <span>BBD Bagh, Kolkata</span>
+            </button>
+            <button class="pin-option-btn" data-pin="600001" data-city="Chennai">
+              <strong>600001</strong> <span>George Town, Chennai</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. HOW THE SCORE WORKS MODAL -->
+  <div class="modal-overlay" id="score-modal" aria-hidden="true" role="dialog" aria-labelledby="score-modal-title">
+    <div class="modal-backdrop" id="score-modal-backdrop"></div>
+    <div class="modal-container score-modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="section-eyebrow">TRANSPARENCY METHODOLOGY</span>
+          <h2 class="modal-title" id="score-modal-title">How Veyra's Sustainability Score Works</h2>
+        </div>
+        <button class="modal-close-btn" id="close-score-modal-btn" aria-label="Close methodology modal">✕</button>
+      </div>
+      <div class="score-modal-body">
+        <p class="score-modal-intro">
+          We don't rely on self-reported marketing badges. Our open scoring system audits 4 verified pillars with weighted telemetry:
+        </p>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-weight">30%</div>
+            <h4 class="pillar-title">Materials & Origin</h4>
+            <p class="pillar-desc">Post-consumer recycled content, zero toxic chemicals, sustainably sourced certifications (FSC, Cradle to Cradle).</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-weight">30%</div>
+            <h4 class="pillar-title">Durability & Repair</h4>
+            <p class="pillar-desc">Official iFixit repairability rating, spare parts availability, modular design, and standard screw usage.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-weight">20%</div>
+            <h4 class="pillar-title">Packaging & Waste</h4>
+            <p class="pillar-desc">100% fiber-based or plastic-free retail box, minimal transit filler volume, and trade-in / recycling takeback.</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-weight">20%</div>
+            <h4 class="pillar-title">Logistics Footprint</h4>
+            <p class="pillar-desc">Distance from fulfillment hub to your PIN, consolidated delivery options, and EV fleet utilization.</p>
+          </div>
+        </div>
+
+        <div class="score-interactive-demo">
+          <h4>Test the Scoring Model</h4>
+          <p class="demo-caption">Slide parameters to see how Veyra recalculates a device's score:</p>
+          <div class="slider-row">
+            <label for="repair-slider">Repairability Index (1-10):</label>
+            <input type="range" id="repair-slider" min="1" max="10" value="7">
+            <span id="repair-val">7/10</span>
+          </div>
+          <div class="slider-row">
+            <label for="packaging-slider">Recycled Packaging (%):</label>
+            <input type="range" id="packaging-slider" min="0" max="100" value="85" step="5">
+            <span id="packaging-val">85%</span>
+          </div>
+          <div class="simulated-result-box">
+            <span>Calculated Score:</span>
+            <strong id="simulated-score-display">82 / 100 (Better Choice)</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast notification banner -->
+  <div class="toast-notice" id="toast-notice" role="status" aria-live="polite"></div>
+
+  <!-- JavaScript Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
